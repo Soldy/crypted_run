@@ -7,7 +7,7 @@ const cryptedClass = function(secret_, ciphers){
     const _encode = function(data){
         let encode_vector = Buffer.alloc(16, 0);
         const encoder = crypto.createCipheriv(_ciphers, _secret, encode_vector);
-        let out = encoder.update(data, 'hex', 'utf8');
+        let out = encoder.update(data, 'utf8', 'hex');
         out += encoder.final('utf8');
         return out;
     };
